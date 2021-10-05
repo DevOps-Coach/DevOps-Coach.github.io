@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DevOps 教练实验室</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2021-10-05T11:23:34 CST">
+<title>本地环境搭建 :: DevOps 教练实验室</title>
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/theme-flex/style.css" rel="stylesheet">
+
+	<link href="/theme-flex/variant-blue.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "https:\/\/devopscoach.org\/";
+</script>
+
+<script
+  async
+  src="https://www.googletagmanager.com/gtag/js?id=UA-84263072-1"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+
+  gtag("config", "UA-84263072-1");
+</script>
+
+
+    
+  </head>
+  <body data-url="/elasticstack/getting-start/20/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="/"  rel="noopener">
+                  <i class='fa fa-home'></i> <label>首页</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://github.com/DevOps-Coach/devops-labs"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>代码库</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://martinliu.cn"  rel="noopener">
+                  <i class='fa fa-cloud-download'></i> <label>教练的博客</label>
+                </a>
+            </li>
+            <li class="" role="">
+                <a href="https://space.bilibili.com/477542716"  rel="noopener">
+                  <i class='fa fa-bookmark'></i> <label>教练的B站</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+          <li data-nav-id="/" class="dd-item">
+          <a href="/">
+            <i class="fa fa-fw fa-home"></i>
+          </a>
+          </li>
+    <li data-nav-id="https://devopscoach.org/elasticstack/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/elasticstack/"><i class='fa fa-github'></i> Elastic Stack 实验室</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="https://devopscoach.org/elasticstack/getting-start/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/elasticstack/getting-start/">实验环境准备</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="https://devopscoach.org/elasticstack/getting-start/20/" class="dd-item active">
+        <div>
+          <a href="/elasticstack/getting-start/20/">
+            本地环境搭建
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="https://devopscoach.org/elasticstack/getting-start/30/" class="dd-item">
+        <div>
+          <a href="/elasticstack/getting-start/30/">
+            Elastic Cloud 环境创建
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="https://devopscoach.org/elasticstack/getting-start/40/" class="dd-item">
+        <div>
+          <a href="/elasticstack/getting-start/40/">
+            腾讯云ES环境创建
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="https://devopscoach.org/elasticstack/getting-start/50/" class="dd-item">
+        <div>
+          <a href="/elasticstack/getting-start/50/">
+            阿里云ES环境创建
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="https://devopscoach.org/elasticstack/getting-start/60/" class="dd-item">
+        <div>
+          <a href="/elasticstack/getting-start/60/">
+            Azure下ES环境创建
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="https://devopscoach.org/elasticstack/getting-start/70/" class="dd-item">
+        <div>
+          <a href="/elasticstack/getting-start/70/">
+            GCP下ES环境创建
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="https://devopscoach.org/vagrant/" class="dd-item alwaysopen
+        ">
+      <div>
+      <a href="/vagrant/">Vagrant 实验室</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+
+
+
+
+    </ul>
+    <section><center>
+  
+  <a
+    class="github-button"
+    href="https://github.com/DevOps-Coach/devopscoach/archive/master.zip"
+    data-icon="octicon-cloud-download"
+    aria-label="Download on GitHub"
+    >Download</a
+  >
+
+  
+  <a
+    class="github-button"
+    href="https://github.com/DevOps-Coach/devopscoach"
+    data-icon="octicon-star"
+    data-show-count="false"
+    aria-label="Star devops-coach/devopscoach on GitHub"
+    >Star</a
+  >
+
+  
+  <a
+    class="github-button"
+    href="https://github.com/DevOps-Coach/devopscoach/fork"
+    data-icon="octicon-repo-forked"
+    data-show-count="true"
+    aria-label="Fork devops-coach/devopscoach on GitHub"
+    >Fork</a
+  >
+</center>
+
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/chef/" >
+   Anasible 实验室</option> 
+  
+    <option value="/elasticstack/" >
+   Elastic Stack 实验室</option> 
+    <option value="/elasticstack/getting-start/" >
+  - 
+   实验环境准备</option> 
+      <option value="/elasticstack/getting-start/20/"  selected>-- 本地环境搭建</option>
+      <option value="/elasticstack/getting-start/30/" >-- Elastic Cloud 环境创建</option>
+      <option value="/elasticstack/getting-start/40/" >-- 腾讯云ES环境创建</option>
+      <option value="/elasticstack/getting-start/50/" >-- 阿里云ES环境创建</option>
+      <option value="/elasticstack/getting-start/60/" >-- Azure下ES环境创建</option>
+      <option value="/elasticstack/getting-start/70/" >-- GCP下ES环境创建</option>
+  
+  
+    <option value="/ansible/" >
+   Chef 实验室</option> 
+  
+    <option value="/gitlab/" >
+   GitLab 实验室</option> 
+  
+    <option value="/jenkins/" >
+   Jenkins 实验室</option> 
+  
+    <option value="/vagrant/" >
+   Vagrant 实验室</option> 
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="搜索...">
+        </div>
+        <script type="text/javascript" src="/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/js/auto-complete.js"></script>
+        <link href="/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "https:\/\/devopscoach.org\/";
+          
+        </script>
+        <script type="text/javascript" src="/js/search.js"></script>
+      </div>
+    
+
+    <h1>本地环境搭建</h1>
+    
+    
+    
+    <h2 id="环境需求">环境需求</h2>
+<p>笔记本电脑的软硬件需求如下。</p>
+<p>硬件配置：</p>
+<ul>
+<li>8GB内存</li>
+<li>i5 及更高 CPU</li>
+<li>SSD硬盘</li>
+<li>Wifi/有线网络</li>
+</ul>
+<p>软件配置：</p>
+<ul>
+<li>MacOS、Windows 或者 Linux 操作系统都可以</li>
+<li>SSH终端登录软件，例如 iTerm2、Terminal、 <a href="https://cmder.net/">cmder for Windows 10</a></li>
+<li>VirtualBox 6.0 用于运行实验环境的虚拟机</li>
+<li>操作系统环境 CentOS 8， 用于安装和运行 Elastic 产品</li>
+<li>推荐虚拟机资源配置（ 1 台 ）
+<ul>
+<li>CPU - 1 Core</li>
+<li>RAM - 2 GB</li>
+<li>硬盘 - 80 GB</li>
+<li>网络 - NAT，host-only</li>
+<li>操作系统 root/vagrant 用户的密码</li>
+</ul>
+</li>
+</ul>
+<p>以上虚拟机可以手工安装，也可以用 vagrant 的方式一键式安装。如果在你的虚拟机软件中，没有现成的满足以上需求的可用的虚拟机，推荐使用下面的一键式虚拟机环境安装方法。</p>
+<h2 id="用-vagrant-准备虚拟机">用 Vagrant 准备虚拟机</h2>
+<p>使用下面的 <code>Vagrantfile</code> 文件创建测试用虚拟机。</p>
+<p>见代码库：https://github.com/DevOps-Coach/elasticstack</p>
+<p>文件名：Vagrantfile1 文件内容如下：</p>
+<pre><code># -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# boxes at https://atlas.hashicorp.com/search.
+BOX_IMAGE = &quot;bento/centos-8&quot;
+MA_COUNT = 1
+
+Vagrant.configure(&quot;2&quot;) do |config|
+  #设置所有 guest 使用相同的静态 dns 解析 /etc/hosts
+  config.vm.provision :hosts, :sync_hosts =&gt; true
+  #设置所有虚拟机的操作系统
+  config.vm.box = BOX_IMAGE
+  #用 vagrant 默认密钥对 ssh 登录
+  config.ssh.insert_key = false
+   
+  # 用于部署 Elasticsearch 服务器的集群 : 单节点、三节点对等、三节点专用 master
+  (1..MA_COUNT).each do |i|
+    config.vm.define &quot;ma#{i}&quot; do |ma_config|
+      ma_config.vm.hostname = &quot;ma#{i}.zenlab.local&quot;
+      ma_config.vm.network :private_network, ip: &quot;192.168.50.#{i + 10}&quot;
+      ma_config.vm.provider :virtualbox do |vb|
+        vb.memory = 2048
+        vb.cpus = 1 
+      end
+      ma_config.vm.provision :shell, path: &quot;es-m1.sh&quot;
+    end
+  end
+
+end
+</code></pre><p>Vagrantfile 调用的 Elasticsearch 部署脚本 <code>es-1m.sh</code> 文件内容如下：</p>
+<pre><code>#!/bin/bash
+# author: Martin Liu
+# url: martinliu.cn
+
+#指定安装的版本
+elastic_version='7.9.0'
+
+#开始安装流程
+echo &quot;Provisioning a Elasticsearch &quot;$elastic_version&quot; Server...&quot;
+sudo date &gt; /etc/vagrant_provisioned_at
+
+#配置 ES 需要的操作系统参数
+sudo swapoff -a
+sudo sysctl -w vm.max_map_count=262144
+sudo sysctl -p
+sudo sh -c &quot;echo 'elasticsearch  -  nofile  65535' &gt;&gt; /etc/security/limits.conf&quot;
+
+#设置个性化 SSH 登录提示信息
+sudo sh -c &quot;echo '**** --  --  --  --  --  --  --  -- ****' &gt; /etc/motd&quot;
+sudo sh -c &quot;echo '**** Welcome to Elastic Stack Labs' &gt;&gt; /etc/motd&quot;
+sudo sh -c &quot;echo '**** --  --  --  --  --  --  --  -- ****' &gt;&gt; /etc/motd&quot;
+sudo sh -c &quot;echo '*' &gt;&gt; /etc/motd&quot;
+
+#安装 ES 软件包
+sudo rpm -ivh /vagrant/rpm/elasticsearch-$elastic_version-x86_64.rpm 
+
+#更新 ES 默认的配置文件
+#sudo cp /vagrant/jvm.options.256m /etc/elasticsearch/jvm.options
+sudo cp /vagrant/es-m1.yml /etc/elasticsearch/elasticsearch.yml
+
+#配置和启动 ES 系统服务
+sudo systemctl daemon-reload
+sudo systemctl enable elasticsearch.service
+sudo systemctl start elasticsearch.service
+sudo systemctl status elasticsearch
+</code></pre><p><code>es-m1.sh</code> 需要的 Elasticsearch 服务器配置文件 <code>es-m1.yml</code> 文件内容如下：</p>
+<pre><code>#默认值是 elasticsearch
+cluster.name: single-node-cluster
+
+#设置成单一节点模式
+discovery.type: single-node
+
+#设定 es 服务器数据目录
+path.data: /var/lib/elasticsearch
+#设定 es 服务器日志目录
+path.logs: /var/log/elasticsearch
+
+#Elasticsearc 服务器提供的 IP，域名和端口设置
+#下面的是 eth1 网卡的任何 ip
+network.host: _eth1_
+</code></pre><h3 id="确定虚拟机的ip地址">确定虚拟机的IP地址</h3>
+<p>如果你安装CentOS 7操作系统时，使用了静态ip地址，请依然用下面的步骤再次确认ip地址正确且可以链接。</p>
+<p>登录虚拟机的控制台后，使用的命令 <code>ip add s</code> 确认虚拟机的Ip地址。如下图所示：</p>
+<p><img src="/images/9601568016714_.pic_hd.jpg" alt=""></p>
+
+<div class="panel panel-primary"><div class="panel-body"><p>记录虚拟机的Ip地址备用。</p>
+</div></div>
+
+<h3 id="设置virtualbox网络端口转发">设置VirtualBox网络端口转发</h3>
+<p>确保笔记本电脑和虚拟机的网络端口可连接。增加3条端口转发规则。如下图所示：</p>
+<p><img src="/images/9591568016572_.pic_hd.jpg" alt="9591568016572_.pic_hd"></p>
+<p>测试从笔记本电脑的操作系统ssh登录到虚拟操作系统。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">~ ssh root@127.0.0.1 -p <span style="color:#ae81ff">2233</span>
+Last login: Mon Sep  <span style="color:#ae81ff">9</span> 19:29:26 <span style="color:#ae81ff">2019</span> from 10.0.2.2
+<span style="color:#f92672">[</span>root@bogon ~<span style="color:#f92672">]</span><span style="color:#75715e">#</span>
+</code></pre></div><p>设置虚拟机主机名 <code>hostnamectl set-hostname node-1 --static</code>， 在/etc/hosts 文件配置本机 主机名 dns 解析。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@bogon config<span style="color:#f92672">]</span><span style="color:#75715e"># hostnamectl set-hostname node-1 --static</span>
+<span style="color:#f92672">[</span>root@bogon config<span style="color:#f92672">]</span><span style="color:#75715e"># vi /etc/hosts</span>
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+10.0.2.15   node-1
+</code></pre></div>
+<div class="panel panel-primary"><div class="panel-body"><p>确保 root 用户能正常ssh登录虚拟机操作系统。</p>
+</div></div>
+
+<h2 id="导入elasticsearch和kibana安装包文件">导入elasticsearch和kibana安装包文件</h2>
+<p>使用scp命令或者同等软件将rpm安装包上传到练习虚拟机中。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">scp -P <span style="color:#ae81ff">2233</span>  elasticsearch-7.3.2-x86_64.rpm root@127.0.0.1:/root/
+scp -P <span style="color:#ae81ff">2233</span>  kibana-7.3.2-x86_64.rpm root@127.0.0.1:/root/
+</code></pre></div><h2 id="安装-elasticsearch">安装 Elasticsearch</h2>
+<p>登录虚拟机操作系统执行安装 <code>rpm -ivh elasticsearch-7.3.2-x86_64.rpm</code> 命令，并启动服务和关闭防火墙服务。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">~ ssh root@127.0.0.1 -p <span style="color:#ae81ff">2233</span>
+Last login: Thu Sep <span style="color:#ae81ff">19</span> 18:57:31 <span style="color:#ae81ff">2019</span> from 10.0.2.2
+<span style="color:#f92672">[</span>root@node-1 ~<span style="color:#f92672">]</span><span style="color:#75715e"># ls</span>
+anaconda-ks.cfg  elasticsearch-7.3.2-x86_64.rpm
+<span style="color:#f92672">[</span>root@node-1 ~<span style="color:#f92672">]</span><span style="color:#75715e"># rpm -ivh elasticsearch-7.3.2-x86_64.rpm </span>
+warning: elasticsearch-7.3.2-x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID d88e42b4: NOKEY
+Preparing...                          <span style="color:#75715e">################################# [100%]</span>
+Creating elasticsearch group... OK
+Creating elasticsearch user... OK
+Updating / installing...
+   1:elasticsearch-0:7.3.2-1          <span style="color:#75715e">################################# [100%]</span>
+<span style="color:#75715e">### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using systemd</span>
+ sudo systemctl daemon-reload
+ sudo systemctl <span style="color:#111">enable</span> elasticsearch.service
+<span style="color:#75715e">### You can start elasticsearch service by executing</span>
+ sudo systemctl start elasticsearch.service
+Created elasticsearch keystore in /etc/elasticsearch
+<span style="color:#f92672">[</span>root@node-1 ~<span style="color:#f92672">]</span><span style="color:#75715e">#</span>
+
+<span style="color:#f92672">[</span>root@node-1 ~<span style="color:#f92672">]</span><span style="color:#75715e"># systemctl stop firewalld</span>
+<span style="color:#f92672">[</span>root@node-1 ~<span style="color:#f92672">]</span><span style="color:#75715e"># systemctl disable firewalld</span>
+
+</code></pre></div><p>配置 Elasticsearch 服务器参数， <code>vi /etc/elasticsearch/elasticsearch.yml</code> 确保配置文件中有如下四行配置。</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">cluster.name</span><span style="color:#111">:</span> <span style="color:#ae81ff">my-elk</span>
+<span style="color:#f92672">node.name</span><span style="color:#111">:</span> <span style="color:#ae81ff">node-1</span>
+<span style="color:#f92672">network.host</span><span style="color:#111">:</span> <span style="color:#ae81ff">0.0.0.0</span>
+<span style="color:#f92672">cluster.initial_master_nodes</span><span style="color:#111">:</span> <span style="color:#ae81ff">node-1</span>
+</code></pre></div><p>用命令  <code>systemctl start elasticsearch</code> 启动 Elasticsearch 服务器</p>
+<p>在虚拟机的命令行验证服务 <code>curl http://127.0.0.1:9200</code></p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@node-1 ~<span style="color:#f92672">]</span><span style="color:#75715e"># systemctl enable elasticsearch</span>
+Created symlink from /etc/systemd/system/multi-user.target.wants/elasticsearch.service to /usr/lib/systemd/system/elasticsearch.service.
+<span style="color:#f92672">[</span>root@node-1 ~<span style="color:#f92672">]</span><span style="color:#75715e"># systemctl start elasticsearch</span>
+<span style="color:#f92672">[</span>root@node-1 ~<span style="color:#f92672">]</span><span style="color:#75715e"># systemctl status elasticsearch</span>
+● elasticsearch.service - Elasticsearch
+   Loaded: loaded <span style="color:#f92672">(</span>/usr/lib/systemd/system/elasticsearch.service<span style="color:#111">;</span> enabled<span style="color:#111">;</span> vendor preset: disabled<span style="color:#f92672">)</span>
+   Active: active <span style="color:#f92672">(</span>running<span style="color:#f92672">)</span> since Thu 2019-09-19 19:55:48 CST<span style="color:#111">;</span> 1h 34min ago
+     Docs: http://www.elastic.co
+ Main PID: <span style="color:#ae81ff">12869</span> <span style="color:#f92672">(</span>java<span style="color:#f92672">)</span>
+   CGroup: /system.slice/elasticsearch.service
+           ├─12869 /usr/share/elasticsearch/jdk/bin/java -Xms1g -Xmx1g -XX:+UseConcMarkSweepGC -XX:C...
+           └─12948 /usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/bin/controller
+
+Sep <span style="color:#ae81ff">19</span> 19:55:48 node-1 systemd<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: Stopped Elasticsearch.
+Sep <span style="color:#ae81ff">19</span> 19:55:48 node-1 systemd<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>: Started Elasticsearch.
+Sep <span style="color:#ae81ff">19</span> 19:55:49 node-1 elasticsearch<span style="color:#f92672">[</span>12869<span style="color:#f92672">]</span>: OpenJDK 64-Bit Server VM warning: Option UseConcMark...se.
+Hint: Some lines were ellipsized, use -l to show in full.
+
+<span style="color:#f92672">[</span>root@node-1 ~<span style="color:#f92672">]</span><span style="color:#75715e"># curl 127.0.0.1:9200</span>
+<span style="color:#f92672">{</span>
+  <span style="color:#d88200">&#34;name&#34;</span> : <span style="color:#d88200">&#34;node-1&#34;</span>,
+  <span style="color:#d88200">&#34;cluster_name&#34;</span> : <span style="color:#d88200">&#34;my-elk&#34;</span>,
+  <span style="color:#d88200">&#34;cluster_uuid&#34;</span> : <span style="color:#d88200">&#34;IMvIAEvNTBmlYINm_iI5bA&#34;</span>,
+  <span style="color:#d88200">&#34;version&#34;</span> : <span style="color:#f92672">{</span>
+    <span style="color:#d88200">&#34;number&#34;</span> : <span style="color:#d88200">&#34;7.3.2&#34;</span>,
+    <span style="color:#d88200">&#34;build_flavor&#34;</span> : <span style="color:#d88200">&#34;default&#34;</span>,
+    <span style="color:#d88200">&#34;build_type&#34;</span> : <span style="color:#d88200">&#34;rpm&#34;</span>,
+    <span style="color:#d88200">&#34;build_hash&#34;</span> : <span style="color:#d88200">&#34;1c1faf1&#34;</span>,
+    <span style="color:#d88200">&#34;build_date&#34;</span> : <span style="color:#d88200">&#34;2019-09-06T14:40:30.409026Z&#34;</span>,
+    <span style="color:#d88200">&#34;build_snapshot&#34;</span> : false,
+    <span style="color:#d88200">&#34;lucene_version&#34;</span> : <span style="color:#d88200">&#34;8.1.0&#34;</span>,
+    <span style="color:#d88200">&#34;minimum_wire_compatibility_version&#34;</span> : <span style="color:#d88200">&#34;6.8.0&#34;</span>,
+    <span style="color:#d88200">&#34;minimum_index_compatibility_version&#34;</span> : <span style="color:#d88200">&#34;6.0.0-beta1&#34;</span>
+  <span style="color:#f92672">}</span>,
+  <span style="color:#d88200">&#34;tagline&#34;</span> : <span style="color:#d88200">&#34;You Know, for Search&#34;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>在笔记本电脑的浏览器里输入网址 <code>http://127.0.0.1:9200</code> 验证 Elasticsearch 服务是否可以访问。</p>
+<p><img src="/images/15689001330273.jpg" alt=""></p>
+
+<div class="panel panel-primary"><div class="panel-body"><ol>
+<li>在虚拟机操作系统的命令行里 curl 127.0.0.1:9200 正常返回</li>
+<li>在笔记本电脑的浏览器里 http://127.0.0.1:9200 能看到与上面相同的信息</li>
+</ol>
+</div></div>
+
+<h2 id="安装-kibana">安装 Kibana</h2>
+<p>执行Kibana 服务器安装命令 <code>rpm -ivh kibana-7.3.2-x86_64.rpm</code></p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@node-1 ~<span style="color:#f92672">]</span><span style="color:#75715e"># rpm -ivh kibana-7.3.2-x86_64.rpm</span>
+warning: kibana-7.3.2-x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID d88e42b4: NOKEY
+Preparing...                          <span style="color:#75715e">################################# [100%]</span>
+Updating / installing...
+   1:kibana-7.3.2-1                   <span style="color:#75715e">################################# [100%]</span>
+<span style="color:#f92672">[</span>root@node-1 ~<span style="color:#f92672">]</span><span style="color:#75715e">#</span>
+
+</code></pre></div><p>确保 Kibana 配置文件  <code>vi /etc/kibana/kibana.yml</code>  中有下面几行参数：</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">server.host</span><span style="color:#111">:</span> <span style="color:#d88200">&#34;10.0.2.15&#34;</span>
+<span style="color:#f92672">server.name</span><span style="color:#111">:</span> <span style="color:#d88200">&#34;node-1&#34;</span>
+<span style="color:#f92672">elasticsearch.hosts</span><span style="color:#111">:</span> <span style="color:#111">[</span><span style="color:#d88200">&#34;http://localhost:9200&#34;</span><span style="color:#111">]</span>
+<span style="color:#f92672">i18n.locale</span><span style="color:#111">:</span> <span style="color:#d88200">&#34;zh-CN&#34;</span>
+</code></pre></div><p>在本机的浏览器访问 Kibana 服务器。选择使用 <code>我们的样例数据 </code>。
+<img src="/images/9571568015382_.pic_hd.jpg" alt="9571568015382_.pic_hd"></p>
+<p>添加三组样例数据。</p>
+<p><img src="/images/9581568015418_.pic_hd.jpg" alt="9581568015418_.pic_hd"></p>
+<p>点击左侧导航栏的仪表板按钮，看到如下仪表板清单。</p>
+<p><img src="/images/15689013007062.jpg" alt=""></p>
+
+<div class="panel panel-primary"><div class="panel-body"><p>笔记本电脑的浏览器可以正常访问 Kibana 服务器。</p>
+</div></div>
+
+
+<div class="panel panel-primary"><div class="panel-body"><ul>
+<li>Elasticsearch 服务器没有开启默认的用户名和密码的安全认证模式，在生产环境中是完全不可取的。</li>
+<li>以上的网络配置和各种服务器配置也是精简版本的，仅限于课堂学习，生产环境的服务器配置需要按照实际情况设计。</li>
+</ul>
+</div></div>
+
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+<a class="nav nav-prev" href="/elasticstack/getting-start/" title="实验环境准备"> <i class="fa fa-chevron-left"></i><label>实验环境准备</label></a>
+    <a class="nav nav-next" href="/elasticstack/getting-start/30/" title="Elastic Cloud 环境创建" style="margin-right: 0px;"><label>Elastic Cloud 环境创建</label><i class="fa fa-chevron-right"></i></a></div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+
+    
+    <div class="github-link">
+      <a href="https://github.com/DevOps-Coach/devopscoach/content/elasticstack/getting-start/20.md" target="blank"><i class="fa fa-code-fork"></i>
+        改善此页面</a>
+    </div>
+    
+  </div>
+
+
+	<div>
+
+
+  
+    <p>教练的微信公众号：MyDevOps</p>
+
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/js/clipboard.min.js"></script>
+
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<script src="/js/featherlight.min.js"></script>
+
+
+
+<script src="/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

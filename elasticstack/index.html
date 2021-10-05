@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2021-10-05T11:23:34 CST">
-<title>404 Page not found :: DevOps 教练实验室</title>
+<title>Elastic Stack 实验室 :: DevOps 教练实验室</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -37,7 +37,7 @@
 
     
   </head>
-  <body data-url="/404.html">
+  <body data-url="/elasticstack/">
     
       <header>
   <div class="logo">
@@ -81,10 +81,11 @@
             <i class="fa fa-fw fa-home"></i>
           </a>
           </li>
-    <li data-nav-id="https://devopscoach.org/elasticstack/" class="dd-item haschildren
+    <li data-nav-id="https://devopscoach.org/elasticstack/" class="dd-item parent active haschildren
         ">
       <div>
-      <a href="/elasticstack/"><i class='fa fa-github'></i> Elastic Stack 实验室</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/elasticstack/"><i class='fa fa-github'></i> Elastic Stack 实验室</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
     <li data-nav-id="https://devopscoach.org/elasticstack/getting-start/" class="dd-item haschildren
@@ -194,8 +195,12 @@
     <option value="/chef/" >
    Anasible 实验室</option> 
   
-    <option value="/elasticstack/" >
-   Elastic Stack 实验室</option>
+    <option value="/elasticstack/"  selected>
+   Elastic Stack 实验室</option> 
+    <option value="/elasticstack/getting-start/" >
+  - 
+   实验环境准备</option>
+  
     <option value="/ansible/" >
    Chef 实验室</option> 
   
@@ -230,21 +235,47 @@
       </div>
     
 
-    <h1>404 Page not found</h1>
+    <h1>Elastic Stack 实验室</h1>
     
     
-	<h1>出错</h1>
-	<p>
-	</p>
-	<p>不好，好像这个页面请假了。</p>
-	<p></p>
-	<p><a href="https://devopscoach.org/">返回主页</a></p>
-	<p><img src="/images/gopher-404.jpg" style="width:50%"></img></p>    
+    
+
+<h2 id="elastic-stack-技术栈简介">Elastic Stack 技术栈简介</h2>
+<p>本实验室的代码在：https://github.com/DevOps-Coach/elasticstack.git</p>
+<p>Elastic Stack 包含了我们常说的 ELK 或者 ELKB。如下图所示：</p>
+<p><img src="/images/9511567741391_.pic_hd.jpg" alt="9521567760281_.pic_hd"></p>
+<p>ELK 是 Elasticsearch、Logstash和Kinina的首字母缩写，ELK Stack是elastic公司三大核心产品的组合方案。</p>
+<p><img src="/images/9521567760281_.pic_hd.jpg" alt="9521567760281_.pic_hd"></p>
+<p>这只小鹿也有它的名字”Elkie“； 下面是关于它的小传。</p>
+<p><img src="https://static-www.elastic.co/v3/assets/bltefdd0b53724fa2ce/blt58ea9362fd6aaad9/5c11ee47928f832d782d0628/elk-stack-social-ads-counseling.svg" alt=""></p>
+<p>Elkie：”对我个人而言，实际上我比你们想象中的要更丰富。“</p>
+<p><img src="https://static-www.elastic.co/v3/assets/bltefdd0b53724fa2ce/blt31d086822c7fd84f/5c11ee524c1d34c30b82624b/elk-stack-social-ads-meditation.svg" alt=""></p>
+<p>Elkie：”我就是那个你们常说的Elastic Stack。“</p>
+<p><img src="https://static-www.elastic.co/v3/assets/bltefdd0b53724fa2ce/bltf7e630361d71c32a/5c11ee5fdf09df047814db2f/elk-stack-social-ads-rorschach.svg" alt="">
+Elkie：”我看到了一个ELK Stack。但是更容易使用。更可扩展。更加强大！“</p>
+<p><img src="https://static-www.elastic.co/v3/assets/bltefdd0b53724fa2ce/blt4d8cdb8b0187854d/5c11ee6cd4785dff77a3f413/elk-stack-social-ads-elkb.svg" alt="">
+Elkie：”显然，我的个性是ELKB型的。“</p>
+<h2 id="准备事项">准备事项</h2>
+<ul>
+<li>确保正常稳定的互联网连接</li>
+<li>可以使用电脑的命令行工具</li>
+<li>操作系统能够解压缩下载的测试和配置数据文件。</li>
+<li>提前完成环境准备工作</li>
+</ul>
+<p>详细介绍见 Elastic 官网： <a href="https://www.elastic.co/cn/what-is/elk-stack">https://www.elastic.co/cn/what-is/elk-stack</a></p>
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted --><!-- raw HTML omitted -->
+<!-- raw HTML omitted -->实验环境准备<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+
+
+
     
     
         <div class="chevrons">
     <div id="navigation">
-<a class="nav nav-next" href="/elasticstack/" title="Elastic Stack 实验室" style="margin-right: 0px;"><label>Elastic Stack 实验室</label><i class="fa fa-chevron-right"></i></a></div>
+<a class="nav nav-prev" href="/" title="DevOps教练实验室"> <i class="fa fa-chevron-left"></i><label>DevOps教练实验室</label></a>
+    <a class="nav nav-next" href="/elasticstack/getting-start/" title="实验环境准备" style="margin-right: 0px;"><label>实验环境准备</label><i class="fa fa-chevron-right"></i></a></div>
   </div>
 
   </section>
@@ -261,7 +292,7 @@
 
     
     <div class="github-link">
-      <a href="https://github.com/DevOps-Coach/devopscoach/content/" target="blank"><i class="fa fa-code-fork"></i>
+      <a href="https://github.com/DevOps-Coach/devopscoach/content/elasticstack/_index.md" target="blank"><i class="fa fa-code-fork"></i>
         改善此页面</a>
     </div>
     
@@ -299,5 +330,3 @@
     
   </body>
 </html>
-
-

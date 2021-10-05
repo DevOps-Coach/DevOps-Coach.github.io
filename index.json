@@ -1,0 +1,127 @@
+[
+{
+	"uri": "https://devopscoach.org/chef/",
+	"title": "Anasible 实验室",
+	"tags": [],
+	"description": "Anasible 实验室",
+	"content": "建设中 "
+},
+{
+	"uri": "https://devopscoach.org/elasticstack/",
+	"title": "Elastic Stack 实验室",
+	"tags": [],
+	"description": "Elastic Stack 实验室",
+	"content": "Elastic Stack 技术栈简介 本实验室的代码在：https://github.com/DevOps-Coach/elasticstack.git\nElastic Stack 包含了我们常说的 ELK 或者 ELKB。如下图所示：\nELK 是 Elasticsearch、Logstash和Kinina的首字母缩写，ELK Stack是elastic公司三大核心产品的组合方案。\n这只小鹿也有它的名字”Elkie“； 下面是关于它的小传。\nElkie：”对我个人而言，实际上我比你们想象中的要更丰富。“\nElkie：”我就是那个你们常说的Elastic Stack。“\nElkie：”我看到了一个ELK Stack。但是更容易使用。更可扩展。更加强大！“\nElkie：”显然，我的个性是ELKB型的。“\n准备事项  确保正常稳定的互联网连接 可以使用电脑的命令行工具 操作系统能够解压缩下载的测试和配置数据文件。 提前完成环境准备工作  详细介绍见 Elastic 官网： https://www.elastic.co/cn/what-is/elk-stack\n实验环境准备"
+},
+{
+	"uri": "https://devopscoach.org/elasticstack/getting-start/",
+	"title": "实验环境准备",
+	"tags": [],
+	"description": "Elastic Stack 的实验环境的基础安装和配置。",
+	"content": "可以使用本地虚拟机、云主机或者其他形式的虚拟机\n本地环境搭建Elastic Cloud 环境创建腾讯云ES环境创建阿里云ES环境创建Azure下ES环境创建GCP下ES环境创建"
+},
+{
+	"uri": "https://devopscoach.org/ansible/",
+	"title": "Chef 实验室",
+	"tags": [],
+	"description": "Chef 实验室",
+	"content": "建设中 "
+},
+{
+	"uri": "https://devopscoach.org/elasticstack/getting-start/20/",
+	"title": "本地环境搭建",
+	"tags": [],
+	"description": "Elastic Stack 的实验环境的基础安装和配置。",
+	"content": "环境需求 笔记本电脑的软硬件需求如下。\n硬件配置：\n 8GB内存 i5 及更高 CPU SSD硬盘 Wifi/有线网络  软件配置：\n MacOS、Windows 或者 Linux 操作系统都可以 SSH终端登录软件，例如 iTerm2、Terminal、 cmder for Windows 10 VirtualBox 6.0 用于运行实验环境的虚拟机 操作系统环境 CentOS 8， 用于安装和运行 Elastic 产品 推荐虚拟机资源配置（ 1 台 ）  CPU - 1 Core RAM - 2 GB 硬盘 - 80 GB 网络 - NAT，host-only 操作系统 root/vagrant 用户的密码    以上虚拟机可以手工安装，也可以用 vagrant 的方式一键式安装。如果在你的虚拟机软件中，没有现成的满足以上需求的可用的虚拟机，推荐使用下面的一键式虚拟机环境安装方法。\n用 Vagrant 准备虚拟机 使用下面的 Vagrantfile 文件创建测试用虚拟机。\n见代码库：https://github.com/DevOps-Coach/elasticstack\n文件名：Vagrantfile1 文件内容如下：\n# -*- mode: ruby -*- # vi: set ft=ruby : # boxes at https://atlas.hashicorp.com/search. BOX_IMAGE = \u0026quot;bento/centos-8\u0026quot; MA_COUNT = 1 Vagrant.configure(\u0026quot;2\u0026quot;) do |config| #设置所有 guest 使用相同的静态 dns 解析 /etc/hosts config.vm.provision :hosts, :sync_hosts =\u0026gt; true #设置所有虚拟机的操作系统 config.vm.box = BOX_IMAGE #用 vagrant 默认密钥对 ssh 登录 config.ssh.insert_key = false # 用于部署 Elasticsearch 服务器的集群 : 单节点、三节点对等、三节点专用 master (1..MA_COUNT).each do |i| config.vm.define \u0026quot;ma#{i}\u0026quot; do |ma_config| ma_config.vm.hostname = \u0026quot;ma#{i}.zenlab.local\u0026quot; ma_config.vm.network :private_network, ip: \u0026quot;192.168.50.#{i + 10}\u0026quot; ma_config.vm.provider :virtualbox do |vb| vb.memory = 2048 vb.cpus = 1 end ma_config.vm.provision :shell, path: \u0026quot;es-m1.sh\u0026quot; end end end Vagrantfile 调用的 Elasticsearch 部署脚本 es-1m.sh 文件内容如下：\n#!/bin/bash # author: Martin Liu # url: martinliu.cn #指定安装的版本 elastic_version='7.9.0' #开始安装流程 echo \u0026quot;Provisioning a Elasticsearch \u0026quot;$elastic_version\u0026quot; Server...\u0026quot; sudo date \u0026gt; /etc/vagrant_provisioned_at #配置 ES 需要的操作系统参数 sudo swapoff -a sudo sysctl -w vm.max_map_count=262144 sudo sysctl -p sudo sh -c \u0026quot;echo 'elasticsearch - nofile 65535' \u0026gt;\u0026gt; /etc/security/limits.conf\u0026quot; #设置个性化 SSH 登录提示信息 sudo sh -c \u0026quot;echo '**** -- -- -- -- -- -- -- -- ****' \u0026gt; /etc/motd\u0026quot; sudo sh -c \u0026quot;echo '**** Welcome to Elastic Stack Labs' \u0026gt;\u0026gt; /etc/motd\u0026quot; sudo sh -c \u0026quot;echo '**** -- -- -- -- -- -- -- -- ****' \u0026gt;\u0026gt; /etc/motd\u0026quot; sudo sh -c \u0026quot;echo '*' \u0026gt;\u0026gt; /etc/motd\u0026quot; #安装 ES 软件包 sudo rpm -ivh /vagrant/rpm/elasticsearch-$elastic_version-x86_64.rpm #更新 ES 默认的配置文件 #sudo cp /vagrant/jvm.options.256m /etc/elasticsearch/jvm.options sudo cp /vagrant/es-m1.yml /etc/elasticsearch/elasticsearch.yml #配置和启动 ES 系统服务 sudo systemctl daemon-reload sudo systemctl enable elasticsearch.service sudo systemctl start elasticsearch.service sudo systemctl status elasticsearch es-m1.sh 需要的 Elasticsearch 服务器配置文件 es-m1.yml 文件内容如下：\n#默认值是 elasticsearch cluster.name: single-node-cluster #设置成单一节点模式 discovery.type: single-node #设定 es 服务器数据目录 path.data: /var/lib/elasticsearch #设定 es 服务器日志目录 path.logs: /var/log/elasticsearch #Elasticsearc 服务器提供的 IP，域名和端口设置 #下面的是 eth1 网卡的任何 ip network.host: _eth1_ 确定虚拟机的IP地址 如果你安装CentOS 7操作系统时，使用了静态ip地址，请依然用下面的步骤再次确认ip地址正确且可以链接。\n登录虚拟机的控制台后，使用的命令 ip add s 确认虚拟机的Ip地址。如下图所示：\n记录虚拟机的Ip地址备用。\n 设置VirtualBox网络端口转发 确保笔记本电脑和虚拟机的网络端口可连接。增加3条端口转发规则。如下图所示：\n测试从笔记本电脑的操作系统ssh登录到虚拟操作系统。\n~ ssh root@127.0.0.1 -p 2233 Last login: Mon Sep 9 19:29:26 2019 from 10.0.2.2 [root@bogon ~]# 设置虚拟机主机名 hostnamectl set-hostname node-1 --static， 在/etc/hosts 文件配置本机 主机名 dns 解析。\n[root@bogon config]# hostnamectl set-hostname node-1 --static [root@bogon config]# vi /etc/hosts 127.0.0.1 localhost localhost.localdomain localhost4 localhost4.localdomain4 ::1 localhost localhost.localdomain localhost6 localhost6.localdomain6 10.0.2.15 node-1  确保 root 用户能正常ssh登录虚拟机操作系统。\n 导入elasticsearch和kibana安装包文件 使用scp命令或者同等软件将rpm安装包上传到练习虚拟机中。\nscp -P 2233 elasticsearch-7.3.2-x86_64.rpm root@127.0.0.1:/root/ scp -P 2233 kibana-7.3.2-x86_64.rpm root@127.0.0.1:/root/ 安装 Elasticsearch 登录虚拟机操作系统执行安装 rpm -ivh elasticsearch-7.3.2-x86_64.rpm 命令，并启动服务和关闭防火墙服务。\n~ ssh root@127.0.0.1 -p 2233 Last login: Thu Sep 19 18:57:31 2019 from 10.0.2.2 [root@node-1 ~]# ls anaconda-ks.cfg elasticsearch-7.3.2-x86_64.rpm [root@node-1 ~]# rpm -ivh elasticsearch-7.3.2-x86_64.rpm  warning: elasticsearch-7.3.2-x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID d88e42b4: NOKEY Preparing... ################################# [100%] Creating elasticsearch group... OK Creating elasticsearch user... OK Updating / installing... 1:elasticsearch-0:7.3.2-1 ################################# [100%] ### NOT starting on installation, please execute the following statements to configure elasticsearch service to start automatically using systemd sudo systemctl daemon-reload sudo systemctl enable elasticsearch.service ### You can start elasticsearch service by executing sudo systemctl start elasticsearch.service Created elasticsearch keystore in /etc/elasticsearch [root@node-1 ~]# [root@node-1 ~]# systemctl stop firewalld [root@node-1 ~]# systemctl disable firewalld 配置 Elasticsearch 服务器参数， vi /etc/elasticsearch/elasticsearch.yml 确保配置文件中有如下四行配置。\ncluster.name: my-elk node.name: node-1 network.host: 0.0.0.0 cluster.initial_master_nodes: node-1 用命令 systemctl start elasticsearch 启动 Elasticsearch 服务器\n在虚拟机的命令行验证服务 curl http://127.0.0.1:9200\n[root@node-1 ~]# systemctl enable elasticsearch Created symlink from /etc/systemd/system/multi-user.target.wants/elasticsearch.service to /usr/lib/systemd/system/elasticsearch.service. [root@node-1 ~]# systemctl start elasticsearch [root@node-1 ~]# systemctl status elasticsearch ● elasticsearch.service - Elasticsearch Loaded: loaded (/usr/lib/systemd/system/elasticsearch.service; enabled; vendor preset: disabled) Active: active (running) since Thu 2019-09-19 19:55:48 CST; 1h 34min ago Docs: http://www.elastic.co Main PID: 12869 (java) CGroup: /system.slice/elasticsearch.service ├─12869 /usr/share/elasticsearch/jdk/bin/java -Xms1g -Xmx1g -XX:+UseConcMarkSweepGC -XX:C... └─12948 /usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64/bin/controller Sep 19 19:55:48 node-1 systemd[1]: Stopped Elasticsearch. Sep 19 19:55:48 node-1 systemd[1]: Started Elasticsearch. Sep 19 19:55:49 node-1 elasticsearch[12869]: OpenJDK 64-Bit Server VM warning: Option UseConcMark...se. Hint: Some lines were ellipsized, use -l to show in full. [root@node-1 ~]# curl 127.0.0.1:9200 { \u0026#34;name\u0026#34; : \u0026#34;node-1\u0026#34;, \u0026#34;cluster_name\u0026#34; : \u0026#34;my-elk\u0026#34;, \u0026#34;cluster_uuid\u0026#34; : \u0026#34;IMvIAEvNTBmlYINm_iI5bA\u0026#34;, \u0026#34;version\u0026#34; : { \u0026#34;number\u0026#34; : \u0026#34;7.3.2\u0026#34;, \u0026#34;build_flavor\u0026#34; : \u0026#34;default\u0026#34;, \u0026#34;build_type\u0026#34; : \u0026#34;rpm\u0026#34;, \u0026#34;build_hash\u0026#34; : \u0026#34;1c1faf1\u0026#34;, \u0026#34;build_date\u0026#34; : \u0026#34;2019-09-06T14:40:30.409026Z\u0026#34;, \u0026#34;build_snapshot\u0026#34; : false, \u0026#34;lucene_version\u0026#34; : \u0026#34;8.1.0\u0026#34;, \u0026#34;minimum_wire_compatibility_version\u0026#34; : \u0026#34;6.8.0\u0026#34;, \u0026#34;minimum_index_compatibility_version\u0026#34; : \u0026#34;6.0.0-beta1\u0026#34; }, \u0026#34;tagline\u0026#34; : \u0026#34;You Know, for Search\u0026#34; } 在笔记本电脑的浏览器里输入网址 http://127.0.0.1:9200 验证 Elasticsearch 服务是否可以访问。\n 在虚拟机操作系统的命令行里 curl 127.0.0.1:9200 正常返回 在笔记本电脑的浏览器里 http://127.0.0.1:9200 能看到与上面相同的信息   安装 Kibana 执行Kibana 服务器安装命令 rpm -ivh kibana-7.3.2-x86_64.rpm\n[root@node-1 ~]# rpm -ivh kibana-7.3.2-x86_64.rpm warning: kibana-7.3.2-x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID d88e42b4: NOKEY Preparing... ################################# [100%] Updating / installing... 1:kibana-7.3.2-1 ################################# [100%] [root@node-1 ~]# 确保 Kibana 配置文件 vi /etc/kibana/kibana.yml 中有下面几行参数：\nserver.host: \u0026#34;10.0.2.15\u0026#34; server.name: \u0026#34;node-1\u0026#34; elasticsearch.hosts: [\u0026#34;http://localhost:9200\u0026#34;] i18n.locale: \u0026#34;zh-CN\u0026#34; 在本机的浏览器访问 Kibana 服务器。选择使用 我们的样例数据 。 添加三组样例数据。\n点击左侧导航栏的仪表板按钮，看到如下仪表板清单。\n笔记本电脑的浏览器可以正常访问 Kibana 服务器。\n  Elasticsearch 服务器没有开启默认的用户名和密码的安全认证模式，在生产环境中是完全不可取的。 以上的网络配置和各种服务器配置也是精简版本的，仅限于课堂学习，生产环境的服务器配置需要按照实际情况设计。   "
+},
+{
+	"uri": "https://devopscoach.org/elasticstack/getting-start/30/",
+	"title": "Elastic Cloud 环境创建",
+	"tags": [],
+	"description": "Elastic Stack 的实验环境的基础安装和配置。",
+	"content": ""
+},
+{
+	"uri": "https://devopscoach.org/gitlab/",
+	"title": "GitLab 实验室",
+	"tags": [],
+	"description": "GitLab 实验室",
+	"content": "建设中 "
+},
+{
+	"uri": "https://devopscoach.org/elasticstack/getting-start/40/",
+	"title": "腾讯云ES环境创建",
+	"tags": [],
+	"description": "Elastic Stack 的实验环境的基础安装和配置。",
+	"content": ""
+},
+{
+	"uri": "https://devopscoach.org/jenkins/",
+	"title": "Jenkins 实验室",
+	"tags": [],
+	"description": "Jenkins 实验室",
+	"content": "建设中 "
+},
+{
+	"uri": "https://devopscoach.org/elasticstack/getting-start/50/",
+	"title": "阿里云ES环境创建",
+	"tags": [],
+	"description": "Elastic Stack 的实验环境的基础安装和配置。",
+	"content": ""
+},
+{
+	"uri": "https://devopscoach.org/elasticstack/getting-start/60/",
+	"title": "Azure下ES环境创建",
+	"tags": [],
+	"description": "Elastic Stack 的实验环境的基础安装和配置。",
+	"content": ""
+},
+{
+	"uri": "https://devopscoach.org/vagrant/",
+	"title": "Vagrant 实验室",
+	"tags": [],
+	"description": "Vagrant 实验室",
+	"content": "建设中 "
+},
+{
+	"uri": "https://devopscoach.org/elasticstack/getting-start/70/",
+	"title": "GCP下ES环境创建",
+	"tags": [],
+	"description": "Elastic Stack 的实验环境的基础安装和配置。",
+	"content": ""
+},
+{
+	"uri": "https://devopscoach.org/_footer/",
+	"title": "",
+	"tags": [],
+	"description": "",
+	"content": "教练的微信公众号：MyDevOps\n"
+},
+{
+	"uri": "https://devopscoach.org/_header/",
+	"title": "",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://devopscoach.org/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "https://devopscoach.org/",
+	"title": "DevOps教练实验室",
+	"tags": [],
+	"description": "",
+	"content": "DevOps 教练的实验室 中国 DevOps 社区活动推荐：\n 活动主题：2021中国DevOps社区峰会-深圳站 活动时间：2021年12月4日（星期六） 活动形式：论坛\u0026amp;工作坊 参会费用：¥199/人 报名注册：https://www.hudongba.com/party/ufpe5.html 票务信息：  限时特价99元 原价199 盲鸟票现已开售，仅限40张 票务咨询请微信联系：DevOps-SQ     关注 DevOps 教练 刘老师的微信公众号\n"
+},
+{
+	"uri": "https://devopscoach.org/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]

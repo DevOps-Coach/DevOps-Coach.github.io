@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Elastic Stack 实验室 on DevOps 教练实验室</title>
+    <link>https://devopscoach.org/elasticstack/</link>
+    <description>Recent content in Elastic Stack 实验室 on DevOps 教练实验室</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language><atom:link href="https://devopscoach.org/elasticstack/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>
